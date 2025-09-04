@@ -18,7 +18,7 @@ const Button = ({
   ...props
 }: React.ButtonHTMLAttributes<HTMLButtonElement>) => (
   <button
-    className={`px-4 py-2 bg-slate-900 text-white rounded-xl hover:bg-slate-700 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] ${className}`}
+    className={`px-4 py-2 bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 rounded-xl hover:bg-slate-700 dark:hover:bg-slate-200 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] ${className}`}
     {...props}
   >
     {children}
@@ -69,17 +69,18 @@ const Badge = ({ children }: { children: React.ReactNode }) => (
   </span>
 );
 
+// UPDATED: force white input background and dark typed text for readability in dark mode
 const Input = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
   <input
     {...props}
-    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
+    className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:bg-white dark:text-gray-900 dark:placeholder-gray-500 dark:border-gray-300 dark:focus:ring-slate-400"
   />
 );
 
 const Textarea = (props: React.TextareaHTMLAttributes<HTMLTextAreaElement>) => (
   <textarea
     {...props}
-    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-slate-400"
+    className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:bg-white dark:text-gray-900 dark:placeholder-gray-500 dark:border-gray-300 dark:focus:ring-slate-400"
   />
 );
 
@@ -251,7 +252,12 @@ function ParallaxHero() {
               <stop offset="0%" stopColor="#60A5FA" stopOpacity="0.08" />
               <stop offset="100%" stopColor="#A78BFA" stopOpacity="0.08" />
             </linearGradient>
-            <pattern id="dots" width="12" height="12" patternUnits="userSpaceOnUse">
+            <pattern
+              id="dots"
+              width="12"
+              height="12"
+              patternUnits="userSpaceOnUse"
+            >
               <circle cx="1" cy="1" r="0.7" fill="#000" fillOpacity="0.06" />
             </pattern>
           </defs>
@@ -267,14 +273,46 @@ function ParallaxHero() {
 
           {/* small code glyph boxes */}
           <g transform="translate(60,60)" fill="#ffffff">
-            <rect x="0" y="0" rx="6" ry="6" width="84" height="52" fill="url(#g1)" fillOpacity="0.06" />
-            <rect x="110" y="30" rx="6" ry="6" width="120" height="46" fill="url(#g1)" fillOpacity="0.04" />
-            <rect x="270" y="10" rx="6" ry="6" width="220" height="72" fill="url(#g1)" fillOpacity="0.03" />
+            <rect
+              x="0"
+              y="0"
+              rx="6"
+              ry="6"
+              width="84"
+              height="52"
+              fill="url(#g1)"
+              fillOpacity="0.06"
+            />
+            <rect
+              x="110"
+              y="30"
+              rx="6"
+              ry="6"
+              width="120"
+              height="46"
+              fill="url(#g1)"
+              fillOpacity="0.04"
+            />
+            <rect
+              x="270"
+              y="10"
+              rx="6"
+              ry="6"
+              width="220"
+              height="72"
+              fill="url(#g1)"
+              fillOpacity="0.03"
+            />
           </g>
 
           {/* angle brackets glyphs */}
           <g transform="translate(420,40)" fill="#000" fillOpacity="0.06">
-            <text x="0" y="28" fontFamily="monospace" fontSize="56">{`</>`}</text>
+            <text
+              x="0"
+              y="28"
+              fontFamily="monospace"
+              fontSize="56"
+            >{`</>`}</text>
           </g>
 
           {/* dot texture on top */}
@@ -296,7 +334,7 @@ function ParallaxHero() {
             </motion.h1>
             <motion.p
               style={{ y: yText }}
-              className="mt-4 text-lg text-gray-600"
+              className="mt-4 text-lg text-gray-800 dark:text-gray-200"
             >
               {ME.summary}
             </motion.p>
@@ -456,7 +494,7 @@ function Contact() {
   return (
     <Section id="contact" title="Contact">
       <div className="grid md:grid-cols-2 gap-6">
-        <Card>
+        <Card className="bg-white dark:bg-white text-slate-900 dark:text-slate-900 border border-gray-200">
           <CardHeader>
             <CardTitle>Get in touch</CardTitle>
             <CardDescription>{CONTACT_NOTE}</CardDescription>
@@ -529,7 +567,7 @@ export default function Portfolio() {
     <div
       className={`min-h-screen transition-colors duration-300 ${
         theme === "dark"
-          ? "bg-[#111] text-gray-100"
+          ? "dark bg-[#111] text-gray-100"
           : "bg-[#f5f5f7] text-slate-900"
       }`}
     >
